@@ -2,6 +2,7 @@ package com.bignerdranch.android.criminalintent
 
 import android.content.Context
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.util.Log
 import android.view.*
 import android.widget.ImageView
@@ -12,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.lang.String.format
 import java.util.*
 
 private const val TAG = "CrimeListFragment"
@@ -113,7 +115,8 @@ class CrimeListFragment : Fragment() {
         fun bind(crime: Crime) {
             this.crime = crime
             titleTextView.text = this.crime.title
-            dateTextView.text = this.crime.date.toString()
+            //DateFormat Challenge
+            dateTextView.text = DateFormat.format("EEE dd MMM yyyy, hh:mm", this.crime.date)
             solvedImageView.visibility = if (crime.isSolved) {
                 View.VISIBLE
             } else {
